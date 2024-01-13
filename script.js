@@ -16,9 +16,20 @@
 
 // sortButton.addEventListener("click", sortInputArray);
 
-function loadNewVocabulary(language) {
+
+// rewrite functions to new es6 syntax
+const loadNewVocabulary = (language) => {
   let vocabulary;
 
+  // do type validation sans typescript
+  if(typeof language !== 'string') {
+    console.log('Language must be a string');
+    return;
+  };
+
+  // set language to uppercase in event user passes in lowercase values (match with switch cases)
+  language = language.toUpperCase();
+  
   switch(language) {
     case 'Spanish':
       vocabulary = ['hola', 'amigo', 'gracias'];
@@ -36,7 +47,7 @@ function loadNewVocabulary(language) {
   displayVocabulary(vocabulary);
 };
 
-function displayVocabulary(words) {
+const displayVocabulary = (words) => {
   if (words.length === 0) {
     console.log('No vocabulary loaded');
     return;
@@ -46,4 +57,5 @@ function displayVocabulary(words) {
   })
 }
 
-loadNewVocabulary('Italian');
+// testing number type for expected error response
+loadNewVocabulary(47);
